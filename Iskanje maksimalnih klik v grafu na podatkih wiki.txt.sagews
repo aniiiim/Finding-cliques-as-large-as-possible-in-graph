@@ -1,8 +1,6 @@
-︠2ce4d1de-3f4d-43ab-b5c3-827c8ddc4808︠
+
 #uvoz podatkov
 #dodajanje povezav v graf
-︡52d6bbda-cd0e-45db-b67e-794557123d36︡
-︠a6314c9b-e5f6-45bd-a4cc-1aecdce3983as︠
 def addEdge(d, u, v):
     if u not in d:
         d[u] = set()
@@ -110,7 +108,7 @@ def bisekcija(C, a = 0.9): #privzeta vrednost a = 0.9
     najvecja_klika = max_klika(C)
     r = len(najvecja_klika) #obstaja kvaziklika velikosti vsaj r
     s, z = r, C.order() #zacetni meji za bisekcijo
-    #a=set()
+    
     while s<=z:
         k = floor((s + z)/2)
         try:
@@ -118,19 +116,18 @@ def bisekcija(C, a = 0.9): #privzeta vrednost a = 0.9
             #ni napake, ILP je dopusten
             m = len(max_k_psevdoklika)
             if k == m: #dobimo kvazikliko velikosti k
-                else: #kvaziklika velikosti m + 1 <= k ne obstaja                return max_k_psevdoklika       #maksimalna kvaziklika ima velikost vsaj k
-       K = max_k_psevdoklika
+                       #maksimalna kvaziklika ima velikost vsaj k
+                K = max_k_psevdoklika
+                s = k + 1 #popravimo spodnjo mejo
+            else: #kvaziklika velikosti m + 1 <= k ne obstaja                
+                return max_k_psevdoklika       
+        
         except: #k-psevdoklika v C velikosti najvec k ne obstaja (ILP ni dopusten)
-                #maksimalna kvaziklika ima ocitno velikost pod k
+                 #maksimalna kvaziklika ima ocitno velikost pod k
             z = k - 1 #popravimo zgornjo mejo
-                    s = k + 1 #popravimo spodnjo mejo
-
-            
-return K
+    return K
 kvazi_klika = bisekcija(C)
 kvazi_klika
-︡2e19f31a-ea4f-4b78-b1f2-08d5af93ddba︡{"stdout":"[1042, 332]\n"}︡{"stdout":"[]\n"}︡{"stdout":"[]\n"}︡{"done":true}︡
-︠93554be4-3d79-4685-9258-fab8565fabfd︠
 
 
 
