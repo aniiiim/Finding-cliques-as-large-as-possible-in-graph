@@ -109,12 +109,13 @@ def max_psevdoklika(C, k, a): #vrne maksimalno k-psevdokliko v C velikosti najve
 
 ︡571f35bf-ee0c-4487-91f0-83beb0863afd︡
 ︠7cf70dac-4c26-4a0d-89a5-a9bd1dbe956cs︠
+
 def bisekcija(C, a):
     najvecja_klika = max_klika(C)
     r = len(najvecja_klika) #obstaja kvaziklika velikosti vsaj r
     s, z = r, n #zacetni meji za bisekcijo
     #a=set()
-    while True:
+    while s<=z:
         k = floor((s + z)/2)
         max_k_psevdoklika = max_psevdoklika(C, k,a) #poiscemo maksimalno k-psevdokliko v C velikosti najvec k
         m = len(max_k_psevdoklika)
@@ -126,12 +127,13 @@ def bisekcija(C, a):
             K = max_k_psevdoklika
             #a.add(K)
             s = k + 1 #popravimo spodnjo mejo
-            if s==z+1:
+            if s==z:
                 #return a
                 return K
         if m > k: #kvaziklika velikosti m + 1 <= k ne obstaja
             max_kvaziklika = max_k_psevdoklika #dobimo maksimalno kvazikliko, bisekcijo prekinemo
             return max_kvaziklika
+
 ︡fd533ec4-d8f3-4731-a002-a2a12c293dd4︡{"done":true}︡
 ︠86754160-41fc-42b2-837f-4c83cdc008car︠
 bisekcija(C,0.9)
