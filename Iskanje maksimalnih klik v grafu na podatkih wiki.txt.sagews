@@ -1,7 +1,8 @@
 ︠2ce4d1de-3f4d-43ab-b5c3-827c8ddc4808︠
 #uvoz podatkov
 #dodajanje povezav v graf
-
+︡52d6bbda-cd0e-45db-b67e-794557123d36︡
+︠a6314c9b-e5f6-45bd-a4cc-1aecdce3983as︠
 def addEdge(d, u, v):
     if u not in d:
         d[u] = set()
@@ -23,7 +24,7 @@ G = Graph(Graf1)
 
 #  Nakljucni povezan podgraf
 G1 = G.subgraph(G.connected_component_containing_vertex(3)) #zacnemo z najvecjo povezano komponento - ta vsebuje vozlisce 3
-n = 100 #velikost podgrafa (za hitrejsi prevod zaenkrat samo n = 100, kasneje n = 300)
+n = 25 #velikost podgrafa (za hitrejsi prevod zaenkrat samo n = 100, kasneje n = 300)
 s, t = set(), set()
 v = G1.random_vertex() #nakljucno izberemo eno vozlisce iz G1
 while len(s) < n:
@@ -66,7 +67,6 @@ najvecja_klika = max_klika(C) # = najvecja klika prvotnega grafa (podgrafa) = ne
 najvecja_klika
 k = len(najvecja_klika)
 
-#i, line
 #iskanje kvazi klik
 #mnozica tistih vozlisc, pri katerih je vsaj (a*100)% povezav, ki bi v kliki morale biti, tudi zares tam
 #maksimiziramo stevilo vozlisc
@@ -76,8 +76,6 @@ k = len(najvecja_klika)
 #k velikost najvecje klike, kot prej, k = len(najvecja_klika)
 #bolj ucinkovito: bisekcija, kjer isceva najmanjsi k, pri katerem bo optimalna resitev imela dovolj povezav
 
-︡999d2830-8372-4c88-8a06-2a396782506a︡{"stdout":"[1103, 805, 319, 993]\n"}︡{"done":true}︡
-︠938122df-014c-4343-8eef-35f3087dbe7fs︠
 def max_psevdoklika(C, k, a): #vrne maksimalno k-psevdokliko v C velikosti najvec k
     p = MixedIntegerLinearProgram(maximization = True) #zopet maksimiramo stevilo vozlisc
     x = p.new_variable(binary = True) #x spremenljivka za vsako vozlisce
@@ -96,47 +94,45 @@ def max_psevdoklika(C, k, a): #vrne maksimalno k-psevdokliko v C velikosti najve
 
     for u,v in C.edges(labels = False):
         p.add_constraint(sum(y[u,v] for u,v in C.edges(labels = False)) >= float(a * ((k-1)/2))*(sum(x[v] for v in C)) )
-    #p.add_constraint(len(x) <= k)
+
+    p.add_constraint(sum(x[v] for v in C) <= k)
     p.solve()
     x1 = p.get_values(x) #vrne slovar ustreznih vrednosti
 
     return[v for v,i in x1.items() if i] #seznam tistih vozlisc, ki so v neodvisni mnozici - vrne samo eno optimalno resitev
 
-#max_k_psevdoklika = max_psevdoklika(C, k, 0.9) #vedno vrne kvazikliko (ni potrebno preverjati gostote podgrafa)
-#max_k_psevdoklika
+max_k_psevdoklika = max_psevdoklika(C, k, 0.9) #vedno vrne kvazikliko (ni potrebno preverjati gostote podgrafa)
+max_k_psevdoklika
 
 #C.subgraph(kvazi_klika).density() ... vrne delez povezav glede na vse mozne (kvazikliko spet isceva na komplementu)
 
-︡571f35bf-ee0c-4487-91f0-83beb0863afd︡
-︠7cf70dac-4c26-4a0d-89a5-a9bd1dbe956cs︠
-
-def bisekcija(C, a):
+def bisekcija(C, a = 0.9): #privzeta vrednost a = 0.9
     najvecja_klika = max_klika(C)
     r = len(najvecja_klika) #obstaja kvaziklika velikosti vsaj r
-    s, z = r, n #zacetni meji za bisekcijo
+    s, z = r, C.order() #zacetni meji za bisekcijo
     #a=set()
     while s<=z:
         k = floor((s + z)/2)
-        max_k_psevdoklika = max_psevdoklika(C, k,a) #poiscemo maksimalno k-psevdokliko v C velikosti najvec k
-        m = len(max_k_psevdoklika)
-        if m < k: #k-psevdoklika v G velikosti najvec k ne obstaja (ILP ni dopusten)
-                  #maksimalna kvaziklika ima ocitno velikost pod k
+        try:
+            max_k_psevdoklika = max_psevdoklika(C, k, a) #poiscemo maksimalno k-psevdokliko v C velikosti najvec k
+            #ni napake, ILP je dopusten
+            m = len(max_k_psevdoklika)
+            if k == m: #dobimo kvazikliko velikosti k
+                else: #kvaziklika velikosti m + 1 <= k ne obstaja                return max_k_psevdoklika       #maksimalna kvaziklika ima velikost vsaj k
+       K = max_k_psevdoklika
+        except: #k-psevdoklika v C velikosti najvec k ne obstaja (ILP ni dopusten)
+                #maksimalna kvaziklika ima ocitno velikost pod k
             z = k - 1 #popravimo zgornjo mejo
-        if k == m: #dobimo kvazikliko velikosti k
-                  #maksimalna kvaziklika ima velikost vsaj k
-            K = max_k_psevdoklika
-            #a.add(K)
-            s = k + 1 #popravimo spodnjo mejo
-            if s==z:
-                #return a
-                return K
-        if m > k: #kvaziklika velikosti m + 1 <= k ne obstaja
-            max_kvaziklika = max_k_psevdoklika #dobimo maksimalno kvazikliko, bisekcijo prekinemo
-            return max_kvaziklika
+                    s = k + 1 #popravimo spodnjo mejo
 
-︡fd533ec4-d8f3-4731-a002-a2a12c293dd4︡{"done":true}︡
-︠86754160-41fc-42b2-837f-4c83cdc008car︠
-bisekcija(C,0.9)
+            
+return K
+kvazi_klika = bisekcija(C)
+kvazi_klika
+︡2e19f31a-ea4f-4b78-b1f2-08d5af93ddba︡{"stdout":"[1042, 332]\n"}︡{"stdout":"[]\n"}︡{"stdout":"[]\n"}︡{"done":true}︡
+︠93554be4-3d79-4685-9258-fab8565fabfd︠
+
+
 
 
 
