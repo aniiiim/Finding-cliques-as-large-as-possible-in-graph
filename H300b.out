@@ -1,0 +1,22 @@
+sage: %time test(H300b)
+Stevilo vozlisc: 300
+Cas iskanja najvecje klike: 244.07 s
+Najvecja klika: [7225, 5800, 7400, 5524, 6624]
+Velikost najvecje klike: 5
+max_psevdoklika(G, 152, 0.90)
+Cas iskanja najvecje 152-psevdoklike: 0.54 s
+Najvecja 152-psevdoklika: []
+Velikost najvecje 152-psevdoklike: 0
+max_psevdoklika(G, 152, 0.90)
+max_psevdoklika(G, 78, 0.90)
+max_psevdoklika(G, 41, 0.90)
+max_psevdoklika(G, 22, 0.90)
+max_psevdoklika(G, 13, 0.90)
+max_psevdoklika(G, 8, 0.90)
+max_psevdoklika(G, 6, 0.90)
+max_psevdoklika(G, 7, 0.90)
+Cas iskanja najvecje kvaziklike: 4391.71 s
+Najvecja kvaziklika: [7225, 5800, 7400, 5524, 6043, 6624]
+Velikost najvecje kvaziklike: 6
+CPU times: user 1h 17min 8s, sys: 5.43 s, total: 1h 17min 13s
+Wall time: 1h 17min 16s
