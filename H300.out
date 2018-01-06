@@ -1,0 +1,14 @@
+# commit 6d9b9f5a774080db7801795ae8ddeb9d22806f01
+sage: %time test(H300)
+Stevilo vozlisc: 300
+Cas iskanja najvecje klike: 261.39 s
+Najvecja klika: [15, 3643, 3956, 737, 766, 4310]
+Velikost najvecje klike: 6
+Cas iskanja najvecje 6-psevdoklike: 238.48 s
+Najvecja 6-psevdoklika: [3643, 5743, 766, 2516, 4310, 3614]
+Velikost najvecje 6-psevdoklike: 6
+Cas iskanja najvecje kvaziklike: 14412.20 s
+Najvecja kvaziklika: [6123, 737, 1403, 766, 6032, 4310, 2485]
+Velikost najvecje kvaziklike: 7
+CPU times: user 4h 8min 17s, sys: 6.51 s, total: 4h 8min 23s
+Wall time: 4h 8min 32s
