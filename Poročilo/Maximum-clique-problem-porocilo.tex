@@ -216,29 +216,35 @@ Poglejmo si vhodne in izhodne podatke funkcije \textit{bisekcija(G, a = 0.9)}.\\
 
 Kot sva omenili je iskanje maksimalne klike (kvaziklike) na najinem originalnem grafu preveč zahtevno in sva se omejili le na iskanje maksimalne klike (kvaziklike) na ustrezni podmnožici grafa.\\
 
-Največji povezan podgraf, kjer nama je program še vrnil maksimalno kliko v doglednem času, je bil podgraf s številom vozlišč $300$. Na njemu sva dobili maksimalno kliko velikosti $6$ in sicer na vozliščih $5773, 6305, 5811, 4361, 6934, 5079$ .\\
+Največji povezan podgraf, kjer nama je program še vrnil maksimalno kliko v doglednem času, je bil podgraf s številom vozlišč $300$. Na njemu sva dobili maksimalno kliko velikosti $6$ in sicer na vozliščih $15, 3643, 3956, 737, 766, 4310$ . Čas iskanja največje klike je znašal 261.39 s. Čas iskanja največje 6-psevdoklike je bil 238.48 s, največja 6-psevdoklika pa povezuje vozlišča $3643, 5743, 766, 2516, 4310, 3614$. \\Največja kvaziklika, pri podgrafu velikosti 300 je enaka 7 in povezuje vozlišča \\$6123, 737, 1403, 766, 6032, 4310, 2485$. Čas iskanja največje klike je bil 14412.2 s. Program je za izračun vsega porabil 14912.07 s.\\
 
 Tukaj morava pripomniti, da sva delali na naključnem povezanem podgrafu in nam zaradi naključnosti lahko program vsakič ob vsaki izvedbi lahko vrne drugačen podgraf in s tem drugačno maksimalno kliko.\\
 
-Za podgraf velikosti $100$ sva dobili maksimalno kliko velikosti $5$ in sicer kliko, ki povezuje vozlišča $3614, 3634, 4846, 3691, 5079$.\\
+Za podgraf velikosti $100$ sva dobili maksimalno kliko velikosti $4$ in sicer kliko, ki povezuje vozlišča $2135, 4191, 4335, 2909$. Čas iskanja največje klike v podgrafu velikosti 100 je bil 1.23 s. Čas iskanja 4-psevdoklike je bil 0.49 s in le-ta povezuje vozlišča $2135, 4335, 4899, 2909$.
+Največja kvaziklika je bila velikosti 5 in vsebuje vozlišča $2135, 4191, 4335, 4948, 29094$. Čas iskanja največje kvaziklike je bil 7.56 s. Program je za izračun vsega porabil 9.28 s. \\
 
-Zaradi preglednosti si poglejmo naključen povezan podgraf s samo $10$ vozlišči, njegovo maksimalno kliko in kvazi-kliko.
-Maksimalna klika je velikosti $3$ in povezuje vozlišča $4948, 8042, 6634$. 
+Opazimo da se z večanjem velikosti grafa, časovna zahtevnost zelo povečuje. Za trikratno povečanje velikosti grafa, se je čas izvedbe povečal za več kot 1500-krat. Opazimo, da ima največjo časovno zahtevnost funkcija za iskanje največje kvaziklike. To je tudi logično, saj je to edina funkcija, ki tudi kliče funkciji za izračun k-psevdoklike in največje klike. Najmanjšo časovno zahtevnst, pa ima funkcija za iskanje k-psevdoklike. \\
+
+Zaradi preglednosti si poglejmo naključen povezan podgraf s samo $30$ vozlišči, njegovo maksimalno kliko in kvazi-kliko.
+Maksimalna klika je velikosti $3$ in povezuje vozlišča $2747, 2237, 3291$. Psevdoklika velikosti 3 povezuje vozlišča $769, 2576, 2775$ in je enaka dobljeni največji kvazikliki s pomočjo bisekcije. Oglejmo si grafe, ki prikazujejo rezultate na podgrafu velikosti 30.\\
 
 \begin{figure}[h]
 \caption{Poljuben povezan podgraf velikosti 30}
 \centering
-\includegraphics[width=10cm, height=4cm]{klika1}
+\includegraphics[width=10cm, height=4cm]{klika}
 \end{figure}
 
 \begin{figure}[h]
 \caption{Maksimalna klika na podgrafu velikosti 30}
 \centering
-\includegraphics[width=10cm, height=4cm]{klika2}
+\includegraphics[width=10cm, height=4cm]{max_klika}
 \end{figure}
 
-Funkcija za iskanje psevdo-klike velikosti vsaj $k$ nama deluje na povezanem podgrafu $H$ in nama vrne za $n=100$ maksimalno kliko. Na komplementu povezanega podgrafa se izvaja v neskončnost. Funkcija, ki izvede bisekcijo, pa nama tako kot za povezani podgraf, kot njegov komplement vrača prazno množico, ne glede na velikost grafa. Zavedava se, da se v funkciji \textit{max\_psevdoklika(C, k, a)} in \textit{bisekcija(C, a=0.9)} nahaja napaka, vendar je žal še nisva uspeli odpraviti.
-
+\begin{figure}[h]
+\caption{Psevdoklika velikosti 3 in največja kvaziklika na podgrafu velikosti 30}
+\centering
+\includegraphics[width=10cm, height=4cm]{psevdoklika}
+\end{figure}
 
 
 \end{document}
