@@ -54,12 +54,11 @@ def max_klika(G):
                                           #seznam tistih vozlisc, ki so v neodvisni mnozici - vrne samo eno optimalno resitev
 
 def max_psevdoklika(G, k, a): #vrne maksimalno k-psevdokliko v C velikosti najvec k
-    p = MixedIntegerLinearProgram(maximization = True, solver = "GLPK") #zopet maksimiramo stevilo vozlisc
+    p = MixedIntegerLinearProgram(maximization = True) #zopet maksimiramo stevilo vozlisc
     x = p.new_variable(binary = True) #x spremenljivka za vsako vozlisce
     y = p.new_variable(binary = True) #y spremenljivka za vsak par vozlisc uv; potencialna povezava (neurejen par razlicnih vozlisc)
                                       #y_uv = 1, ce je x_u = x_v = 1 in je uv povezava v grafu
 
-    #n = G.order()
     #p.set_objective( sum([x[v] * (1 + random()/n) for v in G]) )
     p.set_objective( sum([x[v] for v in G]) )
 
@@ -67,16 +66,14 @@ def max_psevdoklika(G, k, a): #vrne maksimalno k-psevdokliko v C velikosti najve
         p.add_constraint(y[u, v] <= x[u])
         p.add_constraint(y[u, v] <= x[v])
 
-    #for u, v in G.edges(labels = False):
-    #    p.add_constraint( x[u] + x[v] <= 1 )
-
-    #for u,v in G.edges(labels = False): #pogoj ne zagotavlja, da bo dobljena kvaziklika imela dovolj povezav
+    #pogoj ne zagotavlja, da bo dobljena kvaziklika imela dovolj povezav
     p.add_constraint(sum(y[u,v] for u,v in G.edges(labels = False)) >= a * ((k-1)/2)*(sum(x[v] for v in G)) ) #tu vzameva k = len(najvecja_klika)
-
+    
+    #naslednji pogoj zagotovi, da ce dobljena k-psevdoklika obstaja, je tudi kvaziklika:
     p.add_constraint(sum(x[v] for v in G) <= k) #pogoj, da je velikost resitve najvec k
     p.solve()
     x1 = p.get_values(x) #vrne slovar ustreznih vrednosti
-    return[v for v,i in x1.items() if i] #seznam tistih vozlisc, ki so v neodvisni mnozici - vrne samo eno optimalno resitev
+    return[v for v,i in x1.items() if i]
 
 def bisekcija(G, a = 0.9): #privzeta vrednost a = 0.9
     najvecja_klika = max_klika(G)
@@ -84,9 +81,10 @@ def bisekcija(G, a = 0.9): #privzeta vrednost a = 0.9
     s, z = r, G.order() #zacetni meji za bisekcijo
     while s <= z:
         k = floor((s + z)/2)
-        max_k_psevdoklika = max_psevdoklika(G, k, a) #poiscemo maksimalno k-psevdokliko v C velikosti najvec k
+        max_k_psevdoklika = max_psevdoklika(G, k, a) #poiscemo maksimalno k-psevdokliko v G velikosti najvec k
         m = len(max_k_psevdoklika)
-        if m == 0: #k-psevdoklika v C velikosti najvec k ne obstaja
+        if m == 0: #preveri, ali je seznam prazen
+            #k-psevdoklika v G velikosti najvec k ne obstaja
             #maksimalna kvaziklika ima ocitno velikost pod k
             z = k - 1 #popravimo zgornjo mejo
         elif k == m: #dobimo kvazikliko velikosti k
