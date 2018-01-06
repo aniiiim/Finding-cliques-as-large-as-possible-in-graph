@@ -54,6 +54,7 @@ def max_klika(G):
                                           #seznam tistih vozlisc, ki so v neodvisni mnozici - vrne samo eno optimalno resitev
 
 def max_psevdoklika(G, k, a): #vrne maksimalno k-psevdokliko v C velikosti najvec k
+    print "max_psevdoklika(G, %d, %.2f)" % (k, a)
     p = MixedIntegerLinearProgram(maximization = True) #zopet maksimiramo stevilo vozlisc
     x = p.new_variable(binary = True) #x spremenljivka za vsako vozlisce
     y = p.new_variable(binary = True) #y spremenljivka za vsak par vozlisc uv; potencialna povezava (neurejen par razlicnih vozlisc)
