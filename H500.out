@@ -1,0 +1,10 @@
+# commit 6a88d036fb719b787002e49653040a1b092c10fb
+sage: %time test(H500)
+Stevilo vozlisc: 500
+Cas iskanja najvecje klike: 2231.39 s
+Najvecja klika: [4310, 3027, 5079, 3089, 3447, 3459, 1549, 5697]
+Velikost najvecje klike: 8
+max_psevdoklika(G, 254, 0.90)
+Cas iskanja najvecje 254-psevdoklike: 1.85 s
+Najvecja 254-psevdoklika: []
+Velikost najvecje 254-psevdoklike: 0

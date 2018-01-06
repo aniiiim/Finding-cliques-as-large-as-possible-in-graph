@@ -1,3 +1,4 @@
+# commit 6a88d036fb719b787002e49653040a1b092c10fb
 sage: %time test(H300b)
 Stevilo vozlisc: 300
 Cas iskanja najvecje klike: 244.07 s
