@@ -105,7 +105,7 @@ def test(H, a = 0.9):
     t = time()
     print "Cas iskanja najvecje klike: %.2f s" % (t-s)
     print "Najvecja klika: %s" % najvecja_klika
-    print "Velikost najvecje klike: %s" % k
+    print "Velikost najvecje klike: %s" % len(najvecja_klika)
 
     k = floor((len(najvecja_klika) + n)/2)
     s = time()
