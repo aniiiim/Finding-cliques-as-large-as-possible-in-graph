@@ -8,3 +8,9 @@ max_psevdoklika(G, 254, 0.90)
 Cas iskanja najvecje 254-psevdoklike: 1.85 s
 Najvecja 254-psevdoklika: []
 Velikost najvecje 254-psevdoklike: 0
+max_psevdoklika(G, 254, 0.90)
+max_psevdoklika(G, 130, 0.90)
+max_psevdoklika(G, 68, 0.90)
+max_psevdoklika(G, 37, 0.90)
+max_psevdoklika(G, 22, 0.90)
+max_psevdoklika(G, 14, 0.90)
