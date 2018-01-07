@@ -220,7 +220,7 @@ Največji povezan podgraf, kjer nama je program še vrnil maksimalno kliko v dog
 V tem primeru, se je pri poganjanju funkcije max\_psevdoklika pred bisekcijo za k uporabila velikost največje klike ($k = 6$).
 \\
 
-Če pa sva za $k$ uporabili vrednost iz prvega koraka bisekcije, torej $k = floor\frac{\mathrm{len}(najvecja\_klika) + n}{2}$ (v tem primeru je kot rečeno, $n = 300$), pa je bil za vse skupaj porabljen čas slabih 80 minut. Na tem mestu ne bova znova pisali, na katerih vozliščih sva dobili rezultate, saj morava pripomniti, da sva delali na naključnem povezanem podgrafu in lahko zaradi naključnosti program ob vsaki izvedbi vrne drugačen podgraf in s tem drugačno maksimalno kliko.\\
+Če pa sva za $k$ uporabili vrednost iz prvega koraka bisekcije, torej \\ $k = floor\frac{\mathrm{len}(najvecja\_klika) + n}{2}$ (v tem primeru je kot rečeno, $n = 300$), pa je bil za vse skupaj porabljen čas slabih 80 minut. Na tem mestu ne bova znova pisali, na katerih vozliščih sva dobili rezultate, saj morava pripomniti, da sva delali na naključnem povezanem podgrafu in lahko zaradi naključnosti program ob vsaki izvedbi vrne drugačen podgraf in s tem drugačno maksimalno kliko.\\
 
 Za podgraf velikosti $100$ sva dobili maksimalno kliko velikosti $4$ in sicer kliko, ki povezuje vozlišča $2135, 4191, 4335, 2909$. Čas iskanja največje klike v podgrafu velikosti 100 je bil 1.23 s. Čas iskanja 4-psevdoklike je bil 0.49 s in le-ta povezuje vozlišča $2135, 4335, 4899, 2909$.
 Največja kvaziklika je bila velikosti 5 in vsebuje vozlišča $2135, 4191, 4335, 4948, 29094$. Čas iskanja največje kvaziklike je bil 7.56 s. Program je za izračun vsega porabil 9.28 s. 
@@ -229,7 +229,11 @@ Največja kvaziklika je bila velikosti 5 in vsebuje vozlišča $2135, 4191, 4335
 Če pa sva za $k$ uporabili vrednost iz prvega koraka bisekcije, sva za podgraf velikosti $100$ sva dobili maksimalno kliko velikosti $4$ in sicer kliko, ki povezuje vozlišča $2576, 1972, 2485, 3009$. Čas iskanja največje klike v podgrafu velikosti 100 je bil 1.19 s. Čas iskanja 52-psevdoklike je bil 0.03, v tem primeru je največja 52-psevdoklika kar prazen seznam. Največja kvaziklika je bila velikosti 4 in vsebuje vozlišča $2576, 1972, 2485, 3009$. Čas iskanja največje kvaziklike je bil 9.57 s. Program je za izračun vsega porabil 10.79 s. 
 \\
 
-Opazimo da se z večanjem velikosti grafa, časovna zahtevnost zelo povečuje. Za trikratno povečanje velikosti grafa, se je čas izvedbe povečal za več kot 1500-krat. Opazimo, da ima največjo časovno zahtevnost funkcija za iskanje največje kvaziklike. To je tudi logično, saj je to edina funkcija, ki tudi kliče funkciji za izračun k-psevdoklike in največje klike. Najmanjšo časovno zahtevnst, pa ima funkcija za iskanje k-psevdoklike. \\
+Ker so bili dobljeni grafi precej redki, sva zaradi zanimivosti algoritem pognali na manjšem, a gostejšem grafu. Zgenerirali sva podgraf danega prvotnega grafa, ki je imel 50 vozlišč in vzeli njegov komplement. Ker je bil vhodni graf precej gost, je bil pričakovan rezultat ta, da kar celoten graf sestavlja kvazikliko, zato sva v tem primeru zahtevano gostoto $a$ povečali na 95\%. Na komplementu grafa sva potem pognali najin celoštevilski linearni program in v slabe pol ure dobili sledeče rezultate. Največja klika je bila velikosti 27, za ta del izračuna je algoritem porabil 0.06 s. Čas iskanja 38-psevdoklike je bil 40.03 s, največja dobljena kvaziklika pa je bila velikosti 43, za njen izračun je algoritem potreboval 1716.07 s.
+\\
+
+Opazimo lahko, da se z večanjem velikosti grafa časovna zahtevnost zelo povečuje. Poleg tega opazimo tudi, da ima največjo časovno zahtevnost funkcija za iskanje največje kvaziklike. To je tudi logično, saj je to edina funkcija, ki tudi kliče funkciji za izračun k-psevdoklike in največje klike.
+\\
 
 Zaradi preglednosti si poglejmo naključen povezan podgraf s samo $30$ vozlišči, njegovo maksimalno kliko in kvazi-kliko.
 Maksimalna klika je velikosti $3$ in povezuje vozlišča $2747, 2237, 3291$. Psevdoklika velikosti 3 povezuje vozlišča $769, 2576, 2775$ in je enaka dobljeni največji kvazikliki s pomočjo bisekcije. Oglejmo si grafe, ki prikazujejo rezultate na podgrafu velikosti 30.\\
