@@ -1,0 +1,13 @@
+# commit e25f97c87c97fd3a82a0b74ff91f1dacb62ee394
+sage: %time test(H50)
+Stevilo vozlisc: 50
+Cas iskanja najvecje klike: 0.52 s
+Najvecja klika: [2819, 7301, 3593, 7819, 3215, 3717, 2193, 6424, 2923, 4767, 6560, 2721, 2744, 1722, 715, 3658, 6347, 3917, 5201, 5092, 5596, 608, 2128, 7266, 5604, 3562, 3691, 5999, 2410]
+Velikost najvecje klike: 29
+max_psevdoklika(G, 39, 0.90)
+Cas iskanja najvecje 39-psevdoklike: 77.30 s
+Najvecja 39-psevdoklika: [2819, 7301, 3593, 4234, 7819, 2062, 3215, 3717, 2193, 6424, 2923, 6560, 2721, 2595, 7632, 3631, 2744, 2233, 1722, 1982, 715, 3658, 6347, 3917, 6736, 5201, 5335, 5092, 2654, 608, 7266, 1637, 3562, 3691, 5999, 2417, 7803, 2410, 6538]
+Velikost najvecje 39-psevdoklike: 39
+max_psevdoklika(G, 39, 0.90)
+max_psevdoklika(G, 45, 0.90)
+max_psevdoklika(G, 48, 0.90)
