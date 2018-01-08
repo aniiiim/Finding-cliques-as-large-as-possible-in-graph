@@ -11,3 +11,4 @@ Velikost najvecje 39-psevdoklike: 39
 max_psevdoklika(G, 39, 0.90)
 max_psevdoklika(G, 45, 0.90)
 max_psevdoklika(G, 48, 0.90)
+max_psevdoklika(G, 49, 0.90)
