@@ -170,7 +170,7 @@ Pojavi se problem, saj ima klika s $k$ vozlišči $\frac{k(k-1)}{2}$ povezav, to
  
  $$ \sum_{u, v} y_{uv} \geqslant a   \frac{k-1}{2}  \sum_v x_v$$ \\
  
- Dodamo še omejitev da je velikost iskane psevdoklike največ k:
+ Dodamo še omejitev da je velikost iskane psevdoklike največ k in s tem zagotovimo, da če bo dobljena $k$-psevdoklika obstajala, bo to tudi kvaziklika:
  $$\sum_{v \in G} x_v \leqslant k$$\\
 
 Zgornje omejitve in ciljno funkcijo sva zapisali v celoštevilskem linearnem programu, ki poišče maksimalno $k$-psevdokliko v danem grafu, ki je največ velikosti $k$. \\
@@ -178,20 +178,18 @@ Zgornje omejitve in ciljno funkcijo sva zapisali v celoštevilskem linearnem pro
 Linearni program sva zapisali v funkcijo \textit{max\_psevdoklika(G, k, a)}.
 \\
 
-\textit{Vhodni podatki:} Graf $G$ ( ali $H$ povezan podgraf originalnega grafa), $k$ velikost največje klike in $a$ vrednost zahtevane gostote.
+\textit{Vhodni podatki:} Graf $G$ ( ali $H$ povezan podgraf originalnega grafa), $k$ velikost iskane psevdoklike in $a$ vrednost zahtevane gostote.
 \\
 
 \textit{Izhodni podatki:} Naključna maksimalna $k$-psevdoklika povezanega podgrafa originalnega grafa.
 \\
 
- Ker  pogoj \\
-  $$ \sum_{u, v} y_{uv} \geqslant a   \frac{k-1}{2}  \sum_v x_v$$ \\
-ne zagotavlja, da bo dobljena kvaziklika res imela dovolj povezav, sva $k$ določili z bisekcijo. Z bisekcijo sva iskali najmanjši $k$, pri katerem je kvazi-klika imela zadosti povezav. 
+Za $k$ se lahko uporabi velikost največje dobljene klike, kar pa ni najbolj učinkovito, zato sva $k$ določili še z bisekcijo. Z bisekcijo sva iskali najmanjši $k$, pri katerem je kvazi-klika imela zadosti povezav. 
 \\
 
 Najprej sva določili interval znotraj katerega sva iskali $k$. Zgornja meja je bila velikost podgrafa, spodnja meja pa je bila velikost največje klike. Bisekcija se izvaja dokler ne dosežemo zgornje meje. V vsakem koraku bisekcije vzamemo srednjo vrednost intervala: $$k = \frac{s+z}{2}.$$
 Tako sva z linearnim programom za iskanje maksimalne psevdoklike poiskali maksimalno k-psevdokliko v povezanem podgrafu velikosti največ k.
-V funkciji \textit{bisekcija(G, a = 0.9)} sva za zahtevano gostoto podali privzeto vrednost $a = 0.9$, saj iščeva kvaziklike, ki vsebujejo vsaj $90\%$ povezav, ki bi v kliki že morale biti. Pri sami bisekciji pa je bilo potrebno paziti, saj nama je reševanje nedopustnega linearnega programa sprožilo napako, ki sva jo morali ujeti. V funkciji bisekcija sva obravnavali tri možnosti:\\
+V funkciji \textit{bisekcija(G, a = 0.9)} sva za zahtevano gostoto podali privzeto vrednost $a = 0.9$, saj iščeva kvaziklike, ki vsebujejo vsaj $90\%$ povezav, ki bi v kliki že morale biti. V funkciji bisekcija sva obravnavali tri možnosti:\\
 
 \begin{itemize}
 \item \textit{Dobimo kvazikliko velikosti 0;}\\ Prazna množica je vedno dopustna rešitev ILP za iskanje $k$-kvaziklik in v tem primeru bi funkcija vrnila prazen seznam. Sklepamo lahko, da ima maksimalna kvaziklika očitno velikost manjšo od k, zato ustrezno popravimo zgornjo mejo $z = k-1$\\
