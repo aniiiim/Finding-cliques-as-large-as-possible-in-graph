@@ -10,3 +10,17 @@ Najvecja 39-psevdoklika: [7682, 2819, 7301, 3593, 4234, 7819, 2062, 3215, 3717, 
 Velikost najvecje 39-psevdoklike: 39
 max_psevdoklika(G, 39, 0.95)
 max_psevdoklika(G, 45, 0.95)
+
+H = nakljucni_podgraf(n = 50).complement()
+rezultat=test(H, a = 0.95)
+
+Stevilo vozlisc: 50
+Cas iskanja najvecje klike: 0.06 s
+Najvecja klika: [4098, 6020, 1032, 5890, 6676, 3351, 6148, 5787, 6428, 4011, 5807, 4530, 5819, 2593, 5961, 7882, 982, 5465, 5754, 2914, 8295, 4587, 4718, 2774, 6901, 5110, 7143]
+Velikost najvecje klike: 27
+Cas iskanja najvecje 38-psevdoklike: 40.03 s
+Najvecja 38-psevdoklika: [4098, 5891, 6020, 8070, 1032, 5890, 6417, 3351, 6148, 5787, 6428, 3873, 5798, 4011, 5804, 5807, 4530, 2485, 5819, 5439, 2593, 5961, 7882, 2658, 982, 5591, 5465, 6618, 5754, 2914, 4964, 8295, 4587, 4718, 2774, 6901, 7143, 6906]
+Velikost najvecje 38-psevdoklike: 38
+Cas iskanja najvecje kvaziklike: 1716.07 s
+Najvecja kvaziklika: [4098, 5891, 6020, 8070, 1032, 5890, 5262, 6417, 6676, 3351, 6148, 5787, 6428, 3873, 5798, 4011, 5804, 5807, 4530, 5819, 5439, 2593, 5961, 7882, 5963, 3276, 3026, 982, 5591, 5465, 6618, 5754, 2914, 4964, 8295, 4712, 4587, 4718, 2774, 6772, 6901, 7143, 6906]
+Velikost najvecje kvaziklike: 43
