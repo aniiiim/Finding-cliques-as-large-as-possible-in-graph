@@ -1,8 +1,3 @@
-︠c6b7dff4-c2af-4574-83f3-998705cf71a7︠
-#uvoz podatkov
-#dodajanje povezav v graf
-︡0ada55eb-295e-4afe-8899-76eb236e3a2d︡
-︠63c39896-de41-4888-a93f-202d26763e00s︠
 def addEdge(d, u, v):
     if u not in d:
         d[u] = set()
@@ -170,12 +165,8 @@ def test(H, a = 0.9):
     print "Cas iskanja najvecje kvaziklike: %.2f s" % (t-s)
     print "Najvecja kvaziklika: %s" % kvazi_klika
     print "Velikost najvecje kvaziklike: %s" % len(kvazi_klika)
-︡7226b146-5f88-4a3f-99c0-fbd6eef30f7e︡{"done":true}︡
-︠fc179717-0210-441f-a605-e8c46c43e629sr︠
-rezultat=test(H,a=0.9)
+rezultat=test(H, a = 0.9)
 rezultat
-︡8c36ba36-7f0e-40f5-aed4-7d71cbc3fb18︡{"stdout":"\n\nStevilo vozlisc: 100\nCas iskanja najvecje klike: 1.13 s"}
-
 
 
 
